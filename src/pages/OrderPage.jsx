@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { sampleOrders, logoMap } from "../constant/index";
 
+const getSubdomain = () => {
+  const host = window.location.hostname; // Returns "daraz.localhost" OR "daraz.ordermade.com"
+  if (host.includes("localhost")) {
+    const parts = host.split("."); // Includes port (e.g., daraz.localhost:5173)
+    // console.log('parts', parts)
+    return parts.length ? parts[0] : null; // Extract 'daraz' from 'daraz.localhost:5173'
+  } else {
+    const parts = host.split(".");
+    return parts.length > 2 ? parts[0] : null; // Extract 'daraz' from 'daraz.ordermade.com'
+  }
+};
+
 const OrderPage = () => {
-	const getSubdomain = () => {
-		const host = window.location.hostname; // Example: daraz.ordermade.com
-		const parts = host.split(".");
-		return parts.length > 2 ? parts[0] : null; // Extract 'daraz' or 'foodpanda'
-	};
 
 	const [orders, setOrders] = useState([]);
 	const [logo, setLogo] = useState(logoMap.default);
