@@ -89,3 +89,9 @@ export const sampleOrders = {
     { orderId: 325, customerName: "Kim", amount: "$90", status: "Delivered" }
   ]
 };
+
+export const logoMap = {
+  daraz: "https://via.placeholder.com/150?text=Daraz",
+  foodpanda: "https://via.placeholder.com/150?text=FoodPanda",
+  default: "https://via.placeholder.com/150?text=Company" // Default logo
+};
